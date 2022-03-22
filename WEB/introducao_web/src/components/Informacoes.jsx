@@ -21,7 +21,7 @@ function Informacoes(props) {
     return (
         <div>
             <h4>Nome: {nome} </h4>
-            <h4>Curso: {curso} </h4>
+            <h4>Cursos: {curso} </h4>
             <h4>Turno: {turno} </h4>
             <h4>Universidade: {universidade} </h4>
         </div>
