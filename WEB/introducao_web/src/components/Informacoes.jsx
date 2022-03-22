@@ -20,7 +20,7 @@ function Informacoes(props) {
     const { nome, curso, turno, universidade } = props
     return (
         <div>
-            <h4>Nomes: {nome} </h4>
+            <h4>Nome: {nome} </h4>
             <h4>Curso: {curso} </h4>
             <h4>Turno: {turno} </h4>
             <h4>Universidade: {universidade} </h4>
