@@ -3,7 +3,7 @@ import './App.css';
 import Informacoes from './components/Informacoes';
 
 import MeusDados from './components/MeusDados';
-//import MeusDadosProps from './components/MeusDadosProps';
+import MeusDadosProps from './components/MeusDadosProps';
 
 function App() {
   return(
@@ -17,6 +17,26 @@ function App() {
     </div>
   )
 }
+
+/*
+function App() {
+  return(
+    <div className='App'>
+      <MeusDados />
+      <MeusDadosProps
+        nome="Marlus"
+        curso="Sistemas de Informacao"
+      />
+      <Informacoes
+        nome='Fulano'
+        curso='Si'
+        turno='Manha'
+        universidade='UFC'
+      />
+    </div>
+  )
+}
+*/
 
 //Crinado uma função clássica
 /*function App() {

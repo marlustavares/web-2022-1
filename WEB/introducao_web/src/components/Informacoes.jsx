@@ -1,6 +1,5 @@
 import { Component } from "react";
 
-/*
 class Informacoes extends Component {
     render() {
         return (
@@ -13,14 +12,12 @@ class Informacoes extends Component {
         )
     }
 }
-*/
 
-
+/*
 function Informacoes(props) {
     const { nome, curso, turno, universidade } = props
     return (
         <div>
-
             <h4>Nome: {nome} </h4>
             <h4>Curso: {curso} </h4>
             <h4>Turno: {turno} </h4>
@@ -28,6 +25,6 @@ function Informacoes(props) {
         </div>
     )
 }
-
+*/
 
 export default Informacoes
