@@ -1,10 +1,10 @@
 import React from "react";
 
-//Criando uma função clássica
+//1° maneira : Criando uma função clássica
 /*function Questao1() {
   return (
     <div className="App">
-      <h3>Usando funcao classica</h3>
+      <h3>Usando funcao clássica</h3>
       <h1>nome : Marlus Tavares</h1>
       <h1>curso : Sistemas de Informação</h1>
       <h1>Cidade de origem : Quixadá</h1>
@@ -12,8 +12,7 @@ import React from "react";
   )
 }
 
-
-//Constante que recebe uma função arrow
+//2° maneira : Constante que recebe uma função arrow
 /*const Questao1 = () => {
   return (
     <div className="App">
@@ -26,12 +25,15 @@ import React from "react";
 }
 */
 
-//questao 1 modificada para a questão 3
 
 
 
 
-//Constante que recebe uma função arrow versão 1
+/*--------QUESTÃO 1 MODIFICADA PARA RESOLVER  QUESTÃO 3--------*/
+
+
+
+//função arrow versão 1
 const Questao1 = (props) => {
     return (
       <div>

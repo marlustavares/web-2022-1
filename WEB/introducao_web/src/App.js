@@ -7,57 +7,11 @@ import './App.css';
 
 //import Questao1 from './components/atividades/Questao1';
 //import Questao2 from './components/atividades/Questao2';
-import Questao3 from './components/atividades/Questao3';
+//import Questao3 from './components/atividades/Questao3';
+import Questao4 from './components/atividades/Questao4';
 
 
-//Questao1,primeira parte segunda aula
-/*function App() {
-  return(
-    <div className='App'>
-      <Questao1 />
-      
-    </div>
-  )
-}
-*/
-//Questao1,segunda parte,segunda aula  
-/*function App() {
-  return(
-    <div className='App'>
-      <Questao1 />
-      
-    </div>
-  )
-}
-*/
-
-//Questao2,segunda aula  
-/*function App() {
-  return(
-    <div className='App'>
-      <Questao2 />
-      
-    </div>
-  )
-}
-*/
-
-//Questao3,segunda aula  
-function App() {
-  return(
-    <div className='App'>
-      <Questao3
-        nome="Marlus Tavares"
-        curso="Sistemas de Informacao"
-        cidade="Quixada"
-      />
-    </div>
-  )
-}
-
-
-
-//aula de segunda
+/*------------------------PRIMEIRA AULA------------------------*/
 /*
 function App() {
   return(
@@ -142,5 +96,67 @@ function App() {
   }
 }
 */
+
+
+
+
+
+
+
+
+/*------------------------SEGUNDA AULA------------------------*/
+
+
+/*----------------QUESTÃO 1----------------*/
+//Função clássica
+/*function App() {
+  return(
+    <div className='App'>
+      <Questao1 />
+      
+    </div>
+  )
+}
+*/
+
+
+/*----------------QUESTÃO 2----------------*/
+//usando class
+/*function App() {
+  return(
+    <div className='App'>
+      <Questao2 />
+      
+    </div>
+  )
+}
+*/
+
+
+/*----------------QUESTÃO 3----------------*/
+//essa questão usa props
+/*function App() {
+  return(
+    <div className='App'>
+      <Questao3
+        nome="Marlus Tavares"
+        curso="Sistemas de Informacao"
+        cidade="Quixada"
+      />
+    </div>
+  )
+}
+*/
+
+
+/*----------------QUESTÃO 4----------------*/
+//Essa função usa props
+function App() {
+  return(
+    <div className='App'>
+      <Questao4 />
+    </div>
+  )
+}
 
 export default App;

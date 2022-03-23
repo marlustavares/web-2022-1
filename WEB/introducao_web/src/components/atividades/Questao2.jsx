@@ -7,8 +7,8 @@ import { Component } from "react"
             <div>
                 <h3>Usando class</h3>
                 <h1>nome : Marlus Tavares</h1>
-                <h1>curso : Sistemas de Informacao</h1>
-                <h1>Cidade de origem : Quixada</h1>
+                <h1>curso : Sistemas de Informação</h1>
+                <h1>Cidade de origem : Quixadá</h1>
             </div>
         )
     }
@@ -20,11 +20,14 @@ import { Component } from "react"
 
 
 
-//Questao2 modificada para a questao 4
+/*--------QUESTÃO 2 MODIFICADA PARA RESOLVER A QUESTÃO 4--------*/
 
-//questao usando class com props 
+
+
+
+//questão usando class com props 
 class Questao2 extends Component {
-    construtor(props){
+    constructor(props){
         super(props)
     }
 
@@ -33,7 +36,7 @@ class Questao2 extends Component {
         return(
             <div>
                 <h3>Usando class com props</h3>
-                <h1>nome : {nome}</h1>
+                <h1>Nome : {nome}</h1>
                 <h1>curso : {curso}</h1>
                 <h1>Cidade de origem : {cidade}</h1>
             </div>

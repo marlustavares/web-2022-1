@@ -1,7 +1,7 @@
 import React from "react";
 
 import Questao1 from "./Questao1";
-//1° maneira
+//Essa questão usa a questão 1
 const Questao3 = () => {
     return(
         <div>
