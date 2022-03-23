@@ -1,10 +1,64 @@
 import { Component } from 'react';
 import './App.css';
-import Informacoes from './components/Informacoes';
+//import Informacoes from './components/Informacoes';
 
-import MeusDados from './components/MeusDados';
-import MeusDadosProps from './components/MeusDadosProps';
+//import MeusDados from './components/MeusDados';
+//import MeusDadosProps from './components/MeusDadosProps';
 
+//import Questao1 from './components/atividades/Questao1';
+//import Questao2 from './components/atividades/Questao2';
+import Questao3 from './components/atividades/Questao3';
+
+
+//Questao1,primeira parte segunda aula
+/*function App() {
+  return(
+    <div className='App'>
+      <Questao1 />
+      
+    </div>
+  )
+}
+*/
+//Questao1,segunda parte,segunda aula  
+/*function App() {
+  return(
+    <div className='App'>
+      <Questao1 />
+      
+    </div>
+  )
+}
+*/
+
+//Questao2,segunda aula  
+/*function App() {
+  return(
+    <div className='App'>
+      <Questao2 />
+      
+    </div>
+  )
+}
+*/
+
+//Questao3,segunda aula  
+function App() {
+  return(
+    <div className='App'>
+      <Questao3
+        nome="Marlus Tavares"
+        curso="Sistemas de Informacao"
+        cidade="Quixada"
+      />
+    </div>
+  )
+}
+
+
+
+//aula de segunda
+/*
 function App() {
   return(
     <div classname = 'App'>
@@ -17,6 +71,7 @@ function App() {
     </div>
   )
 }
+*/
 
 /*
 function App() {

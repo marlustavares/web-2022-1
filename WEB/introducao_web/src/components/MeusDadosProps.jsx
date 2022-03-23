@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 const MeusDadosProps = (props) => {
-    //console.log(porps.nome)
     return(
         <div>
             <h3>Nome: {props.nome} </h3>
@@ -9,6 +8,7 @@ const MeusDadosProps = (props) => {
         </div>
     )
 }
+
 
 /*
 class MeusDadosProps extends Component {
