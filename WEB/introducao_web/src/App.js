@@ -9,7 +9,32 @@ import './App.css';
 //import Questao2 from './components/atividades/Questao2';
 //import Questao3 from './components/atividades/Questao3';
 import Questao4 from './components/atividades/Questao4';
+import{CapitaoAmerica as Ca,ViuvaNegra as Vn} from './components/Vingadores';
+import Casa from './components/hardcode/Casa';
 
+function App(){
+  return(
+    <div className="App">
+      <Casa />
+
+    </div>
+  )
+}
+
+/*
+function App(){
+  return(
+    <div className="App">
+      <Ca
+        nome="Marlus"
+      />
+      <Vn
+        nome="Lucas"
+      />
+    </div>
+  )
+}
+*/
 
 /*------------------------PRIMEIRA AULA------------------------*/
 /*
@@ -151,12 +176,13 @@ function App() {
 
 /*----------------QUESTÃO 4----------------*/
 //Essa função usa props
-function App() {
+/*function App() {
   return(
     <div className='App'>
       <Questao4 />
     </div>
   )
 }
+*/
 
 export default App;
