@@ -10,12 +10,17 @@ import './App.css';
 //import Questao3 from './components/atividades/Questao3';
 import Questao4 from './components/atividades/Questao4';
 import{CapitaoAmerica as Ca,ViuvaNegra as Vn} from './components/Vingadores';
-import Casa from './components/hardcode/Casa';
+import Casa from './components/hardcoded/Casa';
+import Personagem from './components/hardcoded/Personagem';
 
 function App(){
   return(
     <div className="App">
-      <Casa />
+      <Casa casa="Stark">
+        <Personagem nome="Arya" horario="horário nobre" />
+        <Personagem nome="Tyrion" horario="horário nobre"/>
+        <Personagem nome="Robert" horario="horário nobre"/>
+      </Casa>
 
     </div>
   )
