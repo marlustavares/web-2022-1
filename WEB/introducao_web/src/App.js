@@ -8,38 +8,25 @@ import './App.css';
 //import Questao1 from './components/atividades/Questao1';
 //import Questao2 from './components/atividades/Questao2';
 //import Questao3 from './components/atividades/Questao3';
-import Questao4 from './components/atividades/Questao4';
-import{CapitaoAmerica as Ca,ViuvaNegra as Vn} from './components/Vingadores';
-import Casa from './components/hardcoded/Casa';
+//import Questao4 from './components/atividades/Questao4';
+//import{CapitaoAmerica as Ca,ViuvaNegra as Vn} from './components/Vingadores';
+//import Casa from './components/hardcoded/Casa';
 import Personagem from './components/hardcoded/Personagem';
+import IMC from './components/imc/Imc';
+import IMCCLASS from './components/imc/ImcClass';
+
 
 function App(){
   return(
     <div className="App">
-      <Casa casa="Stark">
-        <Personagem nome="Arya" horario="horário nobre" />
-        <Personagem nome="Tyrion" horario="horário nobre"/>
-        <Personagem nome="Robert" horario="horário nobre"/>
-      </Casa>
-
+        <IMCCLASS altura={1.84} peso={80} />
     </div>
   )
 }
 
-/*
-function App(){
-  return(
-    <div className="App">
-      <Ca
-        nome="Marlus"
-      />
-      <Vn
-        nome="Lucas"
-      />
-    </div>
-  )
-}
-*/
+
+
+
 
 /*------------------------PRIMEIRA AULA------------------------*/
 /*
@@ -185,6 +172,42 @@ function App() {
   return(
     <div className='App'>
       <Questao4 />
+    </div>
+  )
+}
+*/
+
+
+
+/*------------------------TERCEIRA AULA------------------------*/
+
+//criando vários componentes e exponando-os de um arquivo só
+/*
+function App(){
+  return(
+    <div className="App">
+      <Ca
+        nome="Marlus"
+      />
+      <Vn
+        nome="Lucas"
+      />
+    </div>
+  )
+}
+*/
+
+//Conteúdo : Hardcoded,passando atributos do pai para filhos
+/*
+function App(){
+  return(
+    <div className="App">
+      <Casa casa="Stark" horario="horario nobre">
+        <Personagem nome="Arya" />
+        <Personagem nome="Tyrion" />
+        <Personagem nome="Robert" />
+        <Personagem nome="G.R.R.M" />
+      </Casa>
     </div>
   )
 }
