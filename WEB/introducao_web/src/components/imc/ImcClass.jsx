@@ -19,8 +19,9 @@ class ImcClass extends Component{
         const imc = this.CalcularIMC(this.props.altura,this.props.peso)
         return(
             <div>
-                <h1>Sua altura é {this.props.altura}m e seu peso é {this.props.peso}kg. </h1>
-                <h1>Seu IMC é : {imc} </h1>
+                <h1>Cálculo do IMC</h1>
+                <h2>Sua altura é {this.props.altura}m e seu peso é {this.props.peso}kg. </h2>
+                <h2>Seu IMC é : {imc.toFixed(2)} </h2>
                 <hr />
                 <h1>Você está : {this.ResultadoIMC(imc)} </h1>
             </div>

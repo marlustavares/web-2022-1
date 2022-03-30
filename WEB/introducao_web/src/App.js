@@ -14,8 +14,32 @@ import './App.css';
 import Personagem from './components/hardcoded/Personagem';
 import IMC from './components/imc/Imc';
 import IMCCLASS from './components/imc/ImcClass';
+//import Filho from './components/filhoPai/Filho';
+import Pai from './components/filhoPai/Pai';
+import CidadeSimples from './components/cidades/CidadeSimples';
+import CidadeComClasse from './components/cidades/CidadeComClasse';
+
+function App(){
+  return(
+    <div className="App">
+        <CidadeComClasse />
+    </div>
+  )
+}
 
 
+
+/*
+function App(){
+  return(
+    <div className="App">
+        <Pai />
+    </div>
+  )
+}*/
+
+
+/*
 function App(){
   return(
     <div className="App">
@@ -23,6 +47,7 @@ function App(){
     </div>
   )
 }
+*/
 
 
 
