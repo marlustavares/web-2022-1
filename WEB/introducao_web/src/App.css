@@ -4,12 +4,11 @@
   font-family : arial;
   font-size : 13pt;
   width: 800px;
-  height: 500px;
+  height: 560px;
   margin : auto;
   margin-top:20px
 }
 
-.Ap {
-  margin : auto;
-  margin-top:20px
+.HeroImg{
+  padding-top : 20px
 }

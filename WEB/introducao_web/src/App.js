@@ -19,6 +19,52 @@ import Pai from './components/filhoPai/Pai';
 import CidadeSimples from './components/cidades/CidadeSimples';
 import CidadeComClasse from './components/cidades/CidadeComClasse';
 
+
+import Arena from './components/Ap01/questao1/Arena';
+import World from './components/Ap01/questao3/World';
+import Arena2 from './components/Ap01/questao4/Arena2';
+import Hero from './components/Ap01/questao1/Hero';
+import Enemy from './components/Ap01/questao1/Enemy';
+
+
+function App(){
+  return(
+    <div className="App">
+      <World>
+          <Arena2 arena="Arena Castelão">
+            <Hero nome="Paulo" />
+            <Enemy nome="Felipe" />
+          </Arena2>
+        </World>
+    </div>
+  )
+}
+
+/* questão1
+<div className="App">
+        <Arena />
+    </div>
+*/
+
+/*questao2*/
+/*
+function App(){
+  return (
+  <div className="App">
+          <World>
+            <Arena />
+            <Arena />
+            <Arena />
+          </World>
+  </div>
+  )
+}
+*/
+
+
+
+
+/*
 function App(){
   return(
     <div className="App">
@@ -26,6 +72,7 @@ function App(){
     </div>
   )
 }
+*/
 
 
 
