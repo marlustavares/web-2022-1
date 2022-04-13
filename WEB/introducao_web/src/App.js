@@ -24,7 +24,7 @@ import './App.css';
 //import World from './components/Ap01/questao3/World';
 //import Arena2 from './components/Ap01/questao4/Arena2';
 //import Hero from './components/Ap01/questao1/Hero';
-import Enemy from './components/Ap01/questao1/Enemy';
+//import Enemy from './components/Ap01/questao1/Enemy';
 import Contador from './components/hooks/Contador';
 import Contador2 from './components/hooks/Contador2';
 
@@ -33,6 +33,7 @@ function App(){
   return(
     <div className="App">
       <Contador2 />
+      
     </div>
   )
 }
