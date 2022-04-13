@@ -11,22 +11,34 @@ import './App.css';
 //import Questao4 from './components/atividades/Questao4';
 //import{CapitaoAmerica as Ca,ViuvaNegra as Vn} from './components/Vingadores';
 //import Casa from './components/hardcoded/Casa';
-import Personagem from './components/hardcoded/Personagem';
-import IMC from './components/imc/Imc';
-import IMCCLASS from './components/imc/ImcClass';
+//import Personagem from './components/hardcoded/Personagem';
+//import IMC from './components/imc/Imc';
+//import IMCCLASS from './components/imc/ImcClass';
 //import Filho from './components/filhoPai/Filho';
-import Pai from './components/filhoPai/Pai';
-import CidadeSimples from './components/cidades/CidadeSimples';
-import CidadeComClasse from './components/cidades/CidadeComClasse';
+//import Pai from './components/filhoPai/Pai';
+//import CidadeSimples from './components/cidades/CidadeSimples';
+//import CidadeComClasse from './components/cidades/CidadeComClasse';
 
 
-import Arena from './components/Ap01/questao1/Arena';
-import World from './components/Ap01/questao3/World';
-import Arena2 from './components/Ap01/questao4/Arena2';
-import Hero from './components/Ap01/questao1/Hero';
+//import Arena from './components/Ap01/questao1/Arena';
+//import World from './components/Ap01/questao3/World';
+//import Arena2 from './components/Ap01/questao4/Arena2';
+//import Hero from './components/Ap01/questao1/Hero';
 import Enemy from './components/Ap01/questao1/Enemy';
+import Contador from './components/hooks/Contador';
+import Contador2 from './components/hooks/Contador2';
 
 
+function App(){
+  return(
+    <div className="App">
+      <Contador2 />
+    </div>
+  )
+}
+
+
+/*
 function App(){
   return(
     <div className="App">
@@ -38,7 +50,7 @@ function App(){
         </World>
     </div>
   )
-}
+}*/
 
 /* questão1
 <div className="App">
