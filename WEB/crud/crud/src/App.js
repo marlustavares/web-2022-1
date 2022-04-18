@@ -1,72 +1,93 @@
 import * as React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css'
+//import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+//import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 //import "./App.css";
 
 import Home from "./components/Home";
-import Edit from "./components/Edit";
-import Create from "./components/Create";
-import List from "./components/List";
+import About from "./components/About";
+import CreateStudent from "./components/crud/student/CreateStudent";
+import ListStudent from "./components/crud/student/ListStudent";
+import EditStudent from "./components/crud/student/EditStudent";
 
-//import About from "./components/About";
+import CreateTeacher from "./components/crud/teacher/CreateTeacher";
+import EditTeacher from "./components/crud/teacher/EditTeacher";
+import ListTeacher from "./components/crud/teacher/ListTeacher";
+
 //import Page1 from "./components/Page1";
 //import Page2 from "./components/Page2";
 
 function App() {
   return (
-    <div className="container" >
-      <h1>olha o nosso site</h1>
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
+    <div className="container">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand" style={{ paddingLeft: 10 }}>
-          CRUD
+          PROJETO CRUD
         </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="navitem">
-              <Link to="/" className="nav-link">Home</Link>
-            </li>
-            <li className="navitem">
-              <Link to="/Create" className="nav-link">Create</Link>
-            </li>
-            <li className="navitem">
-              <Link to="List" className="nav-link">
-                List
+              <Link to="/" className="nav-link">
+                Home
               </Link>
             </li>
             <li className="navitem">
-              <Link to="/Edit" className="nav-link">
-                Edit
+              <Link to="/about" className="nav-link">
+                About
               </Link>
             </li>
             <li class="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                to="#"
                 id="navbarDropdownMenuLink"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown link
-              </a>
+                Aluno
+              </Link>
               <ul
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
+                  <Link to="/createStudent" className="dropdown-item">
+                    Criar Estudante
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
+                  <Link to="/listStudent" className="dropdown-item">
+                    Listar Estudante
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <Link
+                className="nav-link dropdown-toggle"
+                to="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Professor
+              </Link>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <Link to="/createTeacher" className="dropdown-item">
+                    Criar Professor
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
+                  <Link to="/listTeacher" className="dropdown-item">
+                    Listar Professor
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -75,13 +96,21 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="create" element={<Create />} />
-        <Route path="list" element={<List />} />
-        <Route path="edit" element={<Edit />} />
+        <Route path="about" element={<About />} />
+        <Route path="createStudent" element={<CreateStudent />} />
+        <Route path="listStudent" element={<ListStudent />} />
+        <Route path="editStudent/:id" element={<EditStudent />} />
+
+        <Route path="createTeacher" element={<CreateTeacher />} />
+        <Route path="listTeacher" element={<ListTeacher />} />
+        <Route path="editTeacher/:id" element={<EditTeacher />} />
       </Routes>
     </div>
   );
 }
 
+export default App;
 
-export default App
+
+
+
