@@ -1,0 +1,90 @@
+{
+  "students": [
+    {
+      "id": 0,
+      "name": "Marlus Tavares",
+      "course": "Sistemas de Informação",
+      "ira": 8.9
+    },
+    {
+      "name": "Thiago",
+      "course": "SI",
+      "ira": "6.5",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Amanda",
+      "course": "DD",
+      "ira": 8
+    },
+    {
+      "name": "beto",
+      "course": "ec",
+      "ira": "8",
+      "id": 4
+    },
+    {
+      "name": "tiziu",
+      "course": "EC",
+      "ira": "9.4",
+      "id": 5
+    },
+    {
+      "name": "vitor",
+      "course": "ec",
+      "ira": "8",
+      "id": 6
+    },
+    {
+      "name": "zeca",
+      "course": "ec",
+      "ira": "9",
+      "id": 7
+    },
+    {
+      "name": "Lucas",
+      "course": "ES",
+      "ira": "8.2",
+      "id": 9
+    }
+  ],
+  "teacher": [
+    {
+      "id": 0,
+      "name": "Jefferson Carvalho",
+      "department": "Sistemas de Informação",
+      "degree": "Coordenador"
+    },
+    {
+      "name": "Thiago",
+      "department": "ES",
+      "degree": "2° Coordenador",
+      "id": 1
+    },
+    {
+      "name": "Wladimir",
+      "department": "Projeto GEMP",
+      "degree": "Tutor Titular",
+      "id": 3
+    },
+    {
+      "name": "Germana",
+      "department": "administrativa",
+      "degree": "gerente",
+      "id": 4
+    },
+    {
+      "name": "Enyo",
+      "department": "npi",
+      "degree": "gerente",
+      "id": 5
+    },
+    {
+      "name": "Kennedy",
+      "department": "projetos",
+      "degree": "Coordenador",
+      "id": 6
+    }
+  ]
+}

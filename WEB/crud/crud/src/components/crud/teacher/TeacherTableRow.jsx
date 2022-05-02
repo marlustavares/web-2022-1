@@ -1,21 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const TeacherTableRow = (props) => {
-  const { id, name, department, degree } = props.teacher;
+const { _id, name, department, degree } = props.teacher;
+
+  function deleteTeacher() {
+    if (window.confirm(`Deseja realmente excluir o elemento de ID: ${_id}?`)) {
+        //axios.delete(`http://localhost:3001/teacher/${_id}`)
+        axios.delete(`http://localhost:3002/crud/teacher/delete/${_id}`)
+            .then(response => props.deleteTeacherById(_id))
+            .catch(error => console.log(error))
+
+    }
+  }
+
   return (
     <tr>
-      <td>{id}</td>
+      <td>{_id}</td>
       <td>{name}</td>
       <td>{department}</td>
       <td>{degree}</td>
-      <td>
-        <Link to={`/editTeacher/${id}`} className="btn btn-warning">
+      <td style={{textAlign:"center"}}>
+        <Link to={`/editTeacher/${_id}`} className="btn btn-warning">
           Editar
         </Link>
       </td>
-      <td>
-        <button className="btn btn-danger">Apagar</button>
+      <td style={{textAlign:"center"}}>
+        <button className="btn btn-danger" onClick={() => deleteTeacher()}>Apagar</button>
       </td>
     </tr>
   );

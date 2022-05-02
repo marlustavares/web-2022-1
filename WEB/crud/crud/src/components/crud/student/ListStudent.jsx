@@ -1,29 +1,70 @@
-import React from "react";
-import { students } from "./data";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
+//import { students } from "./data";
 import StudentTableRow from "./StudentTableRow";
 
 const ListStudent = () => {
-  function generateTable() {
-    if (!students) return;
-    return students.map((student, i) => {
-      return <StudentTableRow student={student} key={i} />;
-    });
+  const [students, setStudents] = useState([])
+
+    useEffect(
+        () => {
+            //Com Json-Server usa assim : axios.get("http://localhost:3001/students")
+            axios.get("http://localhost:3002/crud/students/list")
+                .then(
+                    (res) => {
+                        setStudents(res.data)
+                    }
+                )
+                .catch(
+                    (error) => {
+                        console.log(error)
+                    }
+                )
+        }
+        ,
+        []
+    )
+
+    function deleteStudentById(id){
+      let studentsTemp = students
+      for(let i=0;i<studentsTemp.length;i++){
+          if(studentsTemp[i]._id === id){
+              //console.log("1")
+              studentsTemp.splice(i,1)
+          }
+      }
+      setStudents([...studentsTemp]) //deve-se criar um outro array para disparar o re-render
+      //setFlag(!flag)
   }
 
+    function generateTable() {
+      if (!students) return;
+      return students.map((student, i) => {
+        return <StudentTableRow student={student} key={i} deleteStudentById={deleteStudentById} />;
+      });
+    }
+
   return (
-    <div>
-      <h2>Listar Estudante</h2>
-      <table className="table table-striped">
-        <thead>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Curso</th>
-          <th>IRA</th>
-          <th colSpan="2"></th>
-        </thead>
-        <tbody>{generateTable()}</tbody>
-      </table>
-    </div>
+    <>
+      <main>
+        <h2>Listar Estudante</h2>
+        <table className="table table-striped">
+          <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Curso</th>
+            <th>IRA</th>
+            <th colSpan="2"></th>
+          </thead>
+          <tbody>{generateTable()}</tbody>
+        </table>
+      </main>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
+    </>
   );
 };
 
