@@ -5,11 +5,16 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import App from "./App";
 
+import Firebase from './utis/Firebase';
+import FirebaseContext from './utis/FirebaseContext';
+
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <FirebaseContext.Provider value={new Firebase()}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </FirebaseContext.Provider>
 );

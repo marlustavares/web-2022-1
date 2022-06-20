@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link , useParams , useNavigate } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 //import { students } from "./data.js";
 
-const EditStudent = () => {
+import FirebaseContext from "../../../utis/FirebaseContext";
+import FirebaseStudentService from "../../../services/FirebaseStudentService";
+
+const EditStudentPage = () =>
+    <FirebaseContext.Consumer>
+        {firebase => <EditStudent firebase={firebase} />}
+    </FirebaseContext.Consumer>
+
+const EditStudent = (props) => {
   const [name, setName] = useState("");
   const [course, setCourse] = useState("");
   const [ira, setIra] = useState(0);
@@ -13,9 +21,8 @@ const EditStudent = () => {
 
   useEffect(
     () => {
-
         //axios.get('http://localhost:3001/students/' + params.id)
-        axios.get('http://localhost:3002/crud/students/retrieve/' + params.id)
+        /*axios.get('http://localhost:3002/crud/students/retrieve/' + params.id)
             .then(
                 (res) => {
                     setName(res.data.name)
@@ -28,6 +35,16 @@ const EditStudent = () => {
                     console.log(error)
                 }
             )
+        */
+            FirebaseStudentService.retrieve(
+              props.firebase.getFirestoreDb(),
+              (data) => {
+                  setName(data.name)
+                  setCourse(data.course)
+                  setIra(data.ira)
+              },
+              params.id
+          )
 
     }
     ,
@@ -38,7 +55,7 @@ const EditStudent = () => {
     event.preventDefault()
     const updatedStudent = { name, course, ira }
     //axios.put('http://localhost:3001/students/' + params.id, updatedStudent)
-    axios.put('http://localhost:3002/crud/students/update/' + params.id, updatedStudent)
+    /*axios.put('http://localhost:3002/crud/students/update/' + params.id, updatedStudent)
         .then(
             res => {
                 //console.log(res.data)
@@ -48,6 +65,15 @@ const EditStudent = () => {
             }
         )
         .catch(error => console.log(error))
+    */
+        FirebaseStudentService.update(
+          props.firebase.getFirestoreDb(),
+          (ok)=>{
+              if(ok) navigate("/listStudent")
+          },
+          params.id,
+          updatedStudent
+      )
 }
 
   return (
@@ -110,4 +136,4 @@ useEffect(() => {
     alert(`Nome: ${name} \nCurso: ${course}\nIRA: ${ira}`);
   };
 */
-export default EditStudent;
+export default EditStudentPage;

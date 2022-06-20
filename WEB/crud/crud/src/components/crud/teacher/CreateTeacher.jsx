@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { Link , useNavigate } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
-const CreateTeacher = () => {
+import FirebaseContext from "../../../utis/FirebaseContext";
+import FirebaseTeacherService from "../../../services/FirebaseTeacherService";
+
+const CreateTeacherPage = () =>
+<FirebaseContext.Consumer>
+    { firebase => <CreateTeacher firebase={firebase}/>}
+</FirebaseContext.Consumer>
+
+const CreateTeacher = (props) => {
   const [name, setName] = useState("");
   const [department, setDepartment] = useState("");
   const [degree, setDegree] = useState("");
@@ -13,7 +21,7 @@ const CreateTeacher = () => {
 
     const newTeacher = { name, department, degree }
     //axios.post('http://localhost:3001/teacher', newTeacher)
-    axios.post('http://localhost:3002/crud/teacher/create', newTeacher)
+    /*axios.post('http://localhost:3002/crud/teacher/create', newTeacher)
         .then(
             (res) => {
                 console.log(res.data._id)
@@ -26,6 +34,16 @@ const CreateTeacher = () => {
                 console.log(error)
             }
         )
+      */
+        FirebaseTeacherService.create(
+          props.firebase.getFirestoreDb(),
+          (_id)=>{
+           //console.log(res.data._id)
+            alert(`Professor ${name} criado com sucesso com id ${_id}.`)
+            navigate("/listTeacher")
+          },
+          newTeacher
+      )
 
     console.log(name)
     console.log(department)
@@ -72,4 +90,4 @@ const handleSubmit = (event) => {
   };
 */
 
-export default CreateTeacher;
+export default CreateTeacherPage;

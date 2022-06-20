@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link , useParams , useNavigate } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 //import { teachers } from "./data.js";
 
-const EditTeacher = () => {
+import FirebaseContext from "../../../utis/FirebaseContext";
+import FirebaseTeacherService from "../../../services/FirebaseTeacherService";
+
+const EditTeacherPage = () =>
+    <FirebaseContext.Consumer>
+        {firebase => <EditTeacher firebase={firebase} />}
+    </FirebaseContext.Consumer>
+
+const EditTeacher = (props) => {
   const [name, setName] = useState("");
   const [department, setDepartment] = useState("");
   const [degree, setDegree] = useState("");
@@ -15,7 +23,7 @@ const EditTeacher = () => {
     () => {
 
         //axios.get('http://localhost:3001/teacher/' + params.id)
-        axios.get('http://localhost:3002/crud/teacher/retrieve/' + params.id)
+        /*axios.get('http://localhost:3002/crud/teacher/retrieve/' + params.id)
             .then(
                 (res) => {
                     setName(res.data.name)
@@ -28,6 +36,16 @@ const EditTeacher = () => {
                     console.log(error)
                 }
             )
+        */
+        FirebaseTeacherService.retrieve(
+          props.firebase.getFirestoreDb(),
+          (data) => {
+            setName(data.name)
+            setDepartment(data.department)
+            setDegree(data.degree)
+          },
+            params.id
+        )
 
     }
     ,
@@ -38,7 +56,7 @@ const EditTeacher = () => {
     event.preventDefault()
     const updatedTeacher = { name, department, degree }
     //axios.put('http://localhost:3001/students/' + params.id, updatedStudent)
-    axios.put('http://localhost:3002/crud/teacher/update/' + params.id, updatedTeacher)
+    /*axios.put('http://localhost:3002/crud/teacher/update/' + params.id, updatedTeacher)
         .then(
             res => {
                 //console.log(res.data)
@@ -48,6 +66,15 @@ const EditTeacher = () => {
             }
         )
         .catch(error => console.log(error))
+    */
+        FirebaseTeacherService.update(
+          props.firebase.getFirestoreDb(),
+          (ok)=>{
+              if(ok) navigate("/listTeacher")
+          },
+          params.id,
+          updatedTeacher
+      )
   }
 
   return (
@@ -112,4 +139,4 @@ const handleSubmit = (event) => {
 
 */
 
-export default EditTeacher;
+export default EditTeacherPage;

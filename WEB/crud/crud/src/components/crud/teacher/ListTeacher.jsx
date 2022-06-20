@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
 //import { teacher } from "./data";
 import TeacherTableRow from "./TeacherTableRow";
 
-const ListTeacher = () => {
+import FirebaseContext from "../../../utis/FirebaseContext";
+import FirebaseTeacherService from "../../../services/FirebaseTeacherService";
+
+const ListTeacherPage = () =>
+<FirebaseContext.Consumer>
+    {
+        (Firebase)=>{
+            return <ListTeacher firebase={Firebase}/>
+        }
+    }
+</FirebaseContext.Consumer>
+
+const ListTeacher = (props) => {
   const [teacher, setTeacher] = useState([])
 
     useEffect(
         () => {
             //com Json-Server fica assim : axios.get("http://localhost:3001/teacher")
-            axios.get("http://localhost:3002/crud/teacher/list")
+            /*axios.get("http://localhost:3002/crud/teacher/list")
                 .then(
                     (res) => {
                         setTeacher(res.data)
@@ -22,6 +34,14 @@ const ListTeacher = () => {
                         console.log(error)
                     }
                 )
+            */
+          FirebaseTeacherService.list_onSnapshot(
+            props.firebase.getFirestoreDb(),
+            (teachers)=>{
+              //console.log(teachers)
+              setTeacher(teachers)
+            }
+          )
         }
         ,
         []
@@ -42,7 +62,7 @@ const ListTeacher = () => {
     function generateTable() {
       if (!teacher) return;
       return teacher.map((teacher, i) => {
-        return <TeacherTableRow teacher={teacher} key={i} deleteTeacherById={deleteTeacherById} />;
+        return <TeacherTableRow teacher={teacher} key={i} deleteTeacherById={deleteTeacherById} firestore={props.firebase.getFirestoreDb()} />;
       });
     }
 
@@ -78,4 +98,4 @@ const ListTeacher = () => {
   }
 */
 
-export default ListTeacher;
+export default ListTeacherPage;

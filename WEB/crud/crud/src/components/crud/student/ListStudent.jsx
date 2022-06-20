@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
 //import { students } from "./data";
 import StudentTableRow from "./StudentTableRow";
 
-const ListStudent = () => {
+import FirebaseContext from "../../../utis/FirebaseContext";
+import FirebaseStudentService from "../../../services/FirebaseStudentService";
+
+const ListStudentPage = () =>
+<FirebaseContext.Consumer>
+    {
+        (Firebase)=>{
+            return <ListStudent firebase={Firebase}/>
+        }
+    }
+</FirebaseContext.Consumer>
+
+const ListStudent = (props) => {
   const [students, setStudents] = useState([])
 
     useEffect(
         () => {
+          /*
             //Com Json-Server usa assim : axios.get("http://localhost:3001/students")
             axios.get("http://localhost:3002/crud/students/list")
                 .then(
@@ -22,6 +35,15 @@ const ListStudent = () => {
                         console.log(error)
                     }
                 )
+        */
+       
+       FirebaseStudentService.list_onSnapshot(
+                props.firebase.getFirestoreDb(),
+                (students)=>{
+                    //console.log(students)
+                    setStudents(students)
+                }
+            )
         }
         ,
         []
@@ -42,7 +64,7 @@ const ListStudent = () => {
     function generateTable() {
       if (!students) return;
       return students.map((student, i) => {
-        return <StudentTableRow student={student} key={i} deleteStudentById={deleteStudentById} />;
+        return <StudentTableRow student={student} key={i} deleteStudentById={deleteStudentById} firestore={props.firebase.getFirestoreDb()} />;
       });
     }
 
@@ -68,4 +90,4 @@ const ListStudent = () => {
   );
 };
 
-export default ListStudent;
+export default ListStudentPage;

@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { Link , useNavigate } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
-const CreateStudent = () => {
+import FirebaseContext from "../../../utis/FirebaseContext";
+import FirebaseStudentService from "../../../services/FirebaseStudentService";
+
+const CreateStudentPage = () =>
+<FirebaseContext.Consumer>
+    { firebase => <CreateStudent firebase={firebase}/>}
+</FirebaseContext.Consumer>
+
+const CreateStudent = (props) => {
   const [name, setName] = useState("");
   const [course, setCourse] = useState("");
   const [ira, setIRA] = useState(0);
@@ -13,7 +21,7 @@ const CreateStudent = () => {
 
     const newStudent = { name, course, ira }
     //axios.post('http://localhost:3001/students', newStudent)
-    axios.post('http://localhost:3002/crud/students/create', newStudent)
+    /*axios.post('http://localhost:3002/crud/students/create', newStudent)
         .then(
             (res) => {
                 //console.log(res.data._id)
@@ -26,11 +34,17 @@ const CreateStudent = () => {
                 console.log(error)
             }
         )
+    */
+        FirebaseStudentService.create(
+          props.firebase.getFirestoreDb(),
+          (_id)=>{
+           //console.log(res.data._id)
+            alert(`Aluno ${name} criado com sucesso com id ${_id}.`)
+            navigate("/listStudent")
+          },
+          newStudent
+      )
 
-
-    console.log(name)
-    console.log(course)
-    console.log(ira)
   }
 
   return (
@@ -76,4 +90,4 @@ const CreateStudent = () => {
   );   
 };
 
-export default CreateStudent
+export default CreateStudentPage
