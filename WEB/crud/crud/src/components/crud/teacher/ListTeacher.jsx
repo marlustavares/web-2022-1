@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css'
 //import axios from "axios";
 
 //import { teacher } from "./data";
@@ -11,14 +12,15 @@ import FirebaseTeacherService from "../../../services/FirebaseTeacherService";
 const ListTeacherPage = () =>
 <FirebaseContext.Consumer>
     {
-        (Firebase)=>{
-            return <ListTeacher firebase={Firebase}/>
+        (firebase)=>{
+            return <ListTeacher firebase={firebase}/>
         }
     }
 </FirebaseContext.Consumer>
 
 const ListTeacher = (props) => {
   const [teacher, setTeacher] = useState([])
+  const [loading, setLoading] = useState(false)
 
     useEffect(
         () => {
@@ -35,16 +37,18 @@ const ListTeacher = (props) => {
                     }
                 )
             */
+          setLoading(true)
           FirebaseTeacherService.list_onSnapshot(
             props.firebase.getFirestoreDb(),
             (teachers)=>{
               //console.log(teachers)
+              setLoading(false)
               setTeacher(teachers)
             }
           )
         }
         ,
-        []
+        [props.firebase]
     )
 
     function deleteTeacherById(id){
@@ -59,6 +63,41 @@ const ListTeacher = (props) => {
       //setFlag(!flag)
     }
 
+    function renderTable() {
+      if (loading) {
+        //mostrar um spinner!
+        return (
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: 100
+          }}>
+            <div className="spinner-border"
+              style={{ width: '3rem', height: '3rem' }}
+              role="status" />
+            Carregando...
+          </div>
+        )
+      }
+
+      return (
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Departamento</th>
+                <th>Titularidade</th>
+                <th colSpan="2"></th>
+                </tr>
+              </thead>
+              <tbody>{generateTable()}</tbody>
+            </table>
+      )
+    }
+
     function generateTable() {
       if (!teacher) return;
       return teacher.map((teacher, i) => {
@@ -69,24 +108,17 @@ const ListTeacher = (props) => {
   return (
     <>
       <main>
-        <h2>Listar Professor</h2>
-        <table className="table table-striped">
-          <thead>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Departamento</th>
-            <th>Titularidade</th>
-            <th colSpan="2"></th>
-          </thead>
-          <tbody>{generateTable()}</tbody>
-        </table>
+        <h2>
+          Listar Professor
+        </h2>
+        {renderTable()}
       </main>
       <nav>
         <Link to="/">Home</Link>
       </nav>
     </>
   );
-};
+}
 
 /*
 const ListTeacher = () => {

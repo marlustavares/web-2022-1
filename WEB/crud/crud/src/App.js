@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link ,useNavigate} from "react-router-dom";
+import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'
 //import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 //import 'bootstrap/dist/js/bootstrap.bundle.min';
 
@@ -7,6 +9,8 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import Home from "./components/Home";
 import About from "./components/About";
+import Signup from "./components/Signup";
+import MyToast from "./utis/MyToast";
 import CreateStudent from "./components/crud/student/CreateStudent";
 import ListStudent from "./components/crud/student/ListStudent";
 import EditStudent from "./components/crud/student/EditStudent";
@@ -15,10 +19,49 @@ import CreateTeacher from "./components/crud/teacher/CreateTeacher";
 import EditTeacher from "./components/crud/teacher/EditTeacher";
 import ListTeacher from "./components/crud/teacher/ListTeacher";
 
+import FirebaseContext from "./utis/FirebaseContext";
+import FirebaseUserService from "./services/FirebaseUserService";
+
 //import Page1 from "./components/Page1";
 //import Page2 from "./components/Page2";
 
-function App() {
+const AppPage = () =>
+  <FirebaseContext.Consumer>
+    {(firebase) => <App firebase={firebase} />}
+  </FirebaseContext.Consumer>
+
+function App(props) {
+
+  const [logged, setLogged] = useState(false)
+  const [showToast, setShowToast] = useState(false);
+  const [toast, setToast] = useState({header:'',body:'',bg:'secondary'})
+
+  const navigate = useNavigate()
+
+  const logout = () => {
+    FirebaseUserService.logout(
+      props.firebase.getAuthentication(),
+      (res) => {
+        if (res) {
+          props.firebase.setUser(null)
+          setLogged(false)
+          navigate('/')
+        }
+      }
+    )
+  }
+
+  const renderLoginButtonLogout = () => {
+    if (props.firebase.getUser() != null && props.firebase.getUser().emailVerified)
+      return (
+        <div style={{ marginRight: 20 }}>
+          Olá, {props.firebase.getUser().email}
+          <button onClick={() => logout()} style={{ marginLeft: 20 }}>Logout</button>
+        </div>
+      )
+    return
+  }
+
   return (
     <div className="container">
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -109,4 +152,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppPage;

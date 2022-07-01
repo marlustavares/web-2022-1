@@ -5,11 +5,24 @@ import { Link , useParams , useNavigate } from "react-router-dom";
 
 import FirebaseContext from "../../../utis/FirebaseContext";
 import FirebaseStudentService from "../../../services/FirebaseStudentService";
+import RestrictPage from "../../../utis/RestrictPage";
 
 const EditStudentPage = () =>
-    <FirebaseContext.Consumer>
-        {firebase => <EditStudent firebase={firebase} />}
-    </FirebaseContext.Consumer>
+<FirebaseContext.Consumer>
+    {
+        (firebase) => {
+            return (
+                <RestrictPage 
+                    isLogged={firebase.getUser()!=null}
+                    isEmailVerified={(firebase.getUser() != null)?firebase.getUser().emailVerified:false}
+                    auth={firebase.getAuthentication()}
+                    >
+                    <EditStudent firebase={firebase}/>
+                </RestrictPage>
+            )
+        }
+    }
+</FirebaseContext.Consumer>
 
 const EditStudent = (props) => {
   const [name, setName] = useState("");
@@ -48,7 +61,7 @@ const EditStudent = (props) => {
 
     }
     ,
-    [params.id]
+    [params.id,props.firebase]
   ) 
 
   const handleSubmit = (event) => {
@@ -96,7 +109,7 @@ const EditStudent = (props) => {
             <input
               type="text"
               className="form-control"
-              value={course ?? ""}
+              value={(course == null || course === undefined) ? "" : course}
               name="course"
               onChange={(event) => setCourse(event.target.value)}
             />
@@ -106,7 +119,7 @@ const EditStudent = (props) => {
             <input
               type="text"
               className="form-control"
-              value={ira ?? 0}
+              value={(ira == null || ira === undefined) ? "" : ira}
               name="ira"
               onChange={(event) => setIra(event.target.value)}
             />

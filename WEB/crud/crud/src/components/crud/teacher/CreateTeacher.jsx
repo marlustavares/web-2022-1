@@ -63,12 +63,12 @@ const CreateTeacher = (props) => {
           </div>
           <div className="form-group">
             <label>Departamento</label>
-            <input type="text" className="form-control" value={department ?? ""}
+            <input type="text" className="form-control" value={(department == null || department === undefined) ? "" : department}
               name="department" onChange={(event) => setDepartment(event.target.value)} />
           </div>
           <div className="form-group">
             <label>Titularidade</label>
-            <input type="text" className="form-control" value={degree ?? ""} name="degree"
+            <input type="text" className="form-control" value={(degree == null || degree === undefined) ? "" : degree} name="degree"
               onChange={(event) => setDegree(event.target.value)} />
           </div>
           <div className="form-group" style={{ paddingTop: 10 }}>

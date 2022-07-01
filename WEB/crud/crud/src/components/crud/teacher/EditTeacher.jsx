@@ -97,7 +97,7 @@ const EditTeacher = (props) => {
             <input
               type="text"
               className="form-control"
-              value={department ?? ""}
+              value={(department == null || department === undefined) ? "" : department}
               name="department"
               onChange={(event) => setDepartment(event.target.value)}
             />
@@ -107,7 +107,7 @@ const EditTeacher = (props) => {
             <input
               type="text"
               className="form-control"
-              value={degree ?? ""}
+              value={(degree == null || degree === undefined) ? "" : degree}
               name="degree"
               onChange={(event) => setDegree(event.target.value)}
             />
